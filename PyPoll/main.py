@@ -2,6 +2,7 @@ import os
 import csv
 csvpath = os.path.join("election_data.csv")
 total_count = 0 
+unique_candidate = []
 khan_votes = 0
 correy_votes = 0
 li_votes = 0
@@ -13,7 +14,8 @@ with open(csvpath) as csvfile:
     reader = csv.reader(csvfile)
     header = next(reader)
     for row in reader:
-        if row[2] 
+        if row[2] not in unique_candidate: 
+            unique_candidate.append(row[2])
         total_count += 1
         if row[2] == "Khan":
             khan_votes += 1
@@ -38,10 +40,13 @@ tooley = round((tooley_votes)/(total_count), 2)
 li_times = round((li)*100, 2)
 
 print("Election Results")
-print("--------------------------")
+print("----------------------------------------------------------------")
 print(f"Total Votes: {total_count}")
+print(f"List of candidates: {unique_candidate}")
+print("----------------------------------------------------------------")
 print(f"Khan Total Votes: {khan_votes} | Percentage: {khan*100}%")
 print(f"Correy Total Votes: {correy_votes} | Percentage: {correy*100}%")
 print(f"Li Total Votes: {li_votes} | Percentage: {li_times}%")
 print(f"O'Tooley Total Votes: {tooley_votes} | Percentage: {tooley*100}%")
+print("----------------------------------------------------------------")
 print(f"Winner: {winner}")
