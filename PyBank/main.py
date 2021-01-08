@@ -2,6 +2,8 @@
 import os 
 import csv
 file_to_load = os.path.join("budget_data.csv")
+
+#Defined all variables 
 total_months = 0 
 total_net = 0
 change_values = []
@@ -28,6 +30,7 @@ with open(file_to_load) as financial_data:
         greatest_decrease[0] = row[0]
         greatest_decrease[1] = min(change_values)
         greatest_increase[1] = max(change_values)
+#Find greatest increase and decrease months
 #         for row in greatest_increase:
 #             if greatest_increase[1] == 1926159:
 #                 print(greatest_increase)
@@ -37,6 +40,7 @@ with open(file_to_load) as financial_data:
 
 print("Financial Analysis")
 print("---------------------------")
+#added 1 to total_months because I stored the first line as prev_data so adding it back to total months 
 print(f"Total Months: {total_months + 1}")
 print(f"Average Change: {average_change}")
 print(f"Greatest Increase In Profits: Feb-2012 {greatest_increase[1]}")
