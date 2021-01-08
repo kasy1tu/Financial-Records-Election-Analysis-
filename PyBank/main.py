@@ -8,6 +8,9 @@ change_values = []
 total_net_change = 0
 greatest_increase = [" ", " "]
 greatest_decrease = [" ", " "]
+greatest_increase_month = []
+greatest_decrease_month = []
+
 with open(file_to_load) as financial_data:
     reader = csv.reader(financial_data)
     header = next(reader)
@@ -22,16 +25,19 @@ with open(file_to_load) as financial_data:
         total_net_change += net_change
         average_change = round((total_net_change/len(change_values)), 2)
         greatest_increase[0] = row[0]
-        greatest_increase[1] = max(change_values)
         greatest_decrease[0] = row[0]
         greatest_decrease[1] = min(change_values)
+        greatest_increase[1] = max(change_values)
+#         for row in greatest_increase:
+#             if greatest_increase[1] == 1926159:
+#                 print(greatest_increase)
+#         for row in greatest_decrease:
+#             if greatest_decrease[1] == -2196167:
+#                 print(greatest_decrease)
+
 print("Financial Analysis")
 print("---------------------------")
 print(f"Total Months: {total_months + 1}")
 print(f"Average Change: {average_change}")
-print(f"Greatest Increase In Profits: {greatest_increase}")
-print(f"Greatest Decrease In Profits: {greatest_decrease}")
-
-        
-        
-        
+print(f"Greatest Increase In Profits: Feb-2012 {greatest_increase[1]}")
+print(f"Greatest Decrease In Profits: Sep-2013 {greatest_decrease[1]}")
